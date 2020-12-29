@@ -1,30 +1,49 @@
 import React from 'React';
 import styled from 'styled-components';
+import SpiritListIngredients from './SpiritListIngredients.jsx';
 
 const SpiritListItem = (props) => {
-  // console.log(props)
-  const spiritName = Object.keys(props.spirit)[0];
-  // console.log(props.currentSpirit);
   // console.log(Object.keys(props.spirit)[0])
+  const spiritName = Object.keys(props.spirit)[0];
+
   return (
-  <Spirit onClick={(e) => props.SelectSpirit(e)} values={props}>{spiritName}</Spirit>
+    <Spirit
+      className={spiritName}
+      onClick={(e) => props.SelectSpirit(e)} values={props}
+    >
+      <div
+        style={{width:'100%', textAlign:'center'}}
+      >
+        {spiritName}
+      </div>
+      <SpiritListIngredients currentSpirit={props.currentSpirit} spiritComponent={Object.keys(props.spirit)[0]} GetDrink={props.GetDrink}/>
+    </Spirit>
   )
 }
 
 export default SpiritListItem;
 
-const Spirit = styled.h2`
+const Spirit = styled.div`
   display: flex;
   color: white;
   justify-content: center;
-  align-items: center;
+  align-items: ${(props) => {
+    console.log(props)
+    let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
+    return spiritCheck === props.className ? 'flex-start' : 'center';
+  }};
+  flex-wrap: wrap;
   background-color: ${(values) => `#${Object.values(values.values.spirit)}`};
   margin: 0;
   letter-spacing: 8px;
   /* Switch to flexbox for adjusting height later */
   height: ${(props) => {
     let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
-    return spiritCheck === props.children ? '1000px' : '50px';
+    return spiritCheck === props.className ? '1000px' : '40px';
   }};
   cursor: pointer;
+  font-size: ${(props) => {
+    let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
+    return spiritCheck === props.className ? '100px' : '20px';
+  }};
 `
