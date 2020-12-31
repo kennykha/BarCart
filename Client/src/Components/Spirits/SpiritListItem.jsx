@@ -16,7 +16,11 @@ const SpiritListItem = (props) => {
       >
         {spiritName}
       </div>
-      <SpiritListIngredients currentSpirit={props.currentSpirit} spiritComponent={Object.keys(props.spirit)[0]} GetDrink={props.GetDrink}/>
+      <SpiritListIngredients
+        currentSpirit={props.currentSpirit}
+        spiritComponent={Object.keys(props.spirit)[0]}
+        drinkState={props.drinkState}
+        GetDrink={props.GetDrink}/>
     </Spirit>
   )
 }
@@ -28,7 +32,7 @@ const Spirit = styled.div`
   color: white;
   justify-content: center;
   align-items: ${(props) => {
-    console.log(props)
+    // console.log(props)
     let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
     return spiritCheck === props.className ? 'flex-start' : 'center';
   }};

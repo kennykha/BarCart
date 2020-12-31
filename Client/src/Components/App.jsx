@@ -10,7 +10,10 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedSpirit: ""
+      selectedSpirit: "",
+      drinkImg: "",
+      drinkDescription: "",
+      drinkObj: ""
     }
     this.SelectSpirit = this.SelectSpirit.bind(this);
     this.GetDrink = this.GetDrink.bind(this);
@@ -20,35 +23,57 @@ class App extends React.Component {
     const stateCheck = this.state.selectedSpirit;
     if (e.target.innerText === stateCheck) {
       this.setState({
-        selectedSpirit: ""
+        selectedSpirit: "",
+        drinkImg: "",
+        drinkObj: ""
       })
     } else {
       this.setState({
-        selectedSpirit : e.target.innerText
+        selectedSpirit : e.target.innerText,
+        drinkImg: "",
+        drinkObj: ""
       })
     }
   }
 
   GetDrink() {
-    // const options = {
-    //   method: 'GET',
-    //   url: 'https://the-cocktail-db.p.rapidapi.com/filter.php',
-    //   params: {i: `${this.state.currentSpirit}`},
-    //   headers: {
-    //     'x-rapidapi-key': 'b8c833b839msh0c8c011cd1ad1dbp1928dbjsna047b39f62bd',
-    //     'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com'
-    //   }
-    // }
-    console.log(this.state.selectedSpirit)
     axios.get('/drinks', {params:{current:`${this.state.selectedSpirit}`}})
-      .then((success) => console.log('THIS IS SUCCESS', success))
+      .then((success) => {
+        // console.log('THIS IS SUCCESS', success);
+        const drinkObj = {
+          drinkName: success.data.strDrink,
+          drinkIngredients: [],
+          drinkMeasures: [],
+          drinkInstruction: success.data.strInstructions
+        }
+
+        for (var key in success.data) {
+          if (key.includes('Ingredient') && (success.data[`${key}`] !== null)) {
+            drinkObj.drinkIngredients.push(success.data[`${key}`])
+          }
+
+          if (key.includes('Measure') && (success.data[`${key}`] !== null)) {
+            drinkObj.drinkMeasures.push(success.data[`${key}`])
+          }
+        }
+        this.setState({
+          drinkImg: success.data.strDrinkThumb,
+          drinkDescription: success.data,
+          drinkObj: drinkObj
+        })
+      })
       .catch((err) => console.log(err))
   }
 
   render() {
     return (
       <div>
-        <SpiritList SelectSpirit={this.SelectSpirit} currentSpirit={this.state.selectedSpirit} GetDrink={this.GetDrink}/>
+        <SpiritList
+          SelectSpirit={this.SelectSpirit}
+          currentSpirit={this.state.selectedSpirit}
+          // currentSpirit={this.state}
+          drinkState={this.state}
+          GetDrink={this.GetDrink}/>
       </div>
     )
   }

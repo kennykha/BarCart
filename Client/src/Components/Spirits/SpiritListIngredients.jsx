@@ -1,12 +1,14 @@
 import React from 'React';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
+import SpiritListItemDescription from './SpiritListItemDescription.jsx';
 
 const SpiritListIngredients = (props) => {
-  console.log('ingredients props', props)
+  // console.log('ingredients props', props)
   const ingredients = ['Lime', 'Orange', 'Bitters', 'Cream', 'Salt', 'Lime', 'Orange', 'Bitters', 'Cream', 'Salt', 'Lime', 'Orange', 'Bitters', 'Cream', 'Salt']
   if (props.currentSpirit === props.spiritComponent) {
     // console.log('ingredient check', props.currentSpirit === props.spiritComponent)
+    const drinkImg = props.drinkState.drinkImg
     return (
       <SpiritIngredients>
         <Button
@@ -20,21 +22,14 @@ const SpiritListIngredients = (props) => {
           What are you having?
         </Button>
         {/* Left Container */}
-        <div style={{width:'49.8%', height:'90%', border:'1px solid black'}}>
-            {/* {ingredients.map((ingredient) => (
-              <Button
-                style={{flexWrap: 'wrap'}}
-                onClick={(event) => event.stopPropagation()}
-                variant="contained"
-                color="default"
-              >
-                {ingredient}
-              </Button>
-            ))} */}
-          {/* <Button style={{marginTop: '500px', marginRight:'200px'}} variant='contained'>What are you having?</Button> */}
+        <div style={{width:'49.8%', height:'90%', border:'1px solid black', display:'flex'}}>
+          <img
+            style={{width:'100%', height:'100%'}}
+            src={drinkImg} />
         </div>
         {/* Right container */}
         <div style={{width:'49.8%', height:'90%', border:'1px solid black'}}>
+          <SpiritListItemDescription drinkState={props.drinkState}/>
         </div>
       </SpiritIngredients>
     )
@@ -58,3 +53,16 @@ const SpiritIngredients = styled.div`
   /* margin-right: 1000px; */
 
 `
+
+// For ingredient Buttons--------------------------------------->
+{/* {ingredients.map((ingredient) => (
+  <Button
+    style={{flexWrap: 'wrap'}}
+    onClick={(event) => event.stopPropagation()}
+    variant="contained"
+    color="default"
+  >
+    {ingredient}
+  </Button>
+))} */}
+{/* <Button style={{marginTop: '500px', marginRight:'200px'}} variant='contained'>What are you having?</Button> */}

@@ -34,9 +34,10 @@ App.get('/drinks', (req, res) => {
       return axios.request(options)
     })
     .catch((err) => console.log(err))
-    .then((drink) => console.log('DRINKKKKKKK', drink.data.drinks[0]))
-
-  res.send('done')
+    .then((drink) => {
+      console.log(drink.data.drinks[0])
+      res.status(200).send(drink.data.drinks[0])
+    })
 });
 
 App.listen(3000, () => (
