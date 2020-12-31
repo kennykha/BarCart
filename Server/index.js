@@ -22,10 +22,12 @@ App.get('/drinks', (req, res) => {
   }
   axios.request(options)
     .then((success) => {
+      let randomDrink = Math.floor(Math.random() * (success.data.drinks.length - 0)) + 0;
+      console.log('RANDOM DRINK NUMBER', randomDrink)
       const options = {
         method: 'GET',
         url: 'https://the-cocktail-db.p.rapidapi.com/lookup.php',
-        params: {i: `${success.data.drinks[0].idDrink}`},
+        params: {i: `${success.data.drinks[randomDrink].idDrink}`},
         headers: {
           'x-rapidapi-key': `${api_key.key}`,
           'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com'
