@@ -49,5 +49,6 @@ const Spirit = styled.div`
     return spiritCheck === props.className ? '100px' : '20px';
   }};
   transition: height 0.5s ease-out;
+  transition: font-size 0.2s ease;
   /* overflow: hidden; */
 `

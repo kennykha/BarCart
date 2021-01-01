@@ -34,23 +34,10 @@ const SpiritListIngredients = (props) => {
     const drinkImg = props.drinkState.drinkImg
     return (
       <SpiritIngredients>
-        {/* <ButtonStyled /> */}
-        <ButtonStyled
-          // onClick={(event) => {
-          //   event.stopPropagation();
-          //   props.GetDrink();
-          // }}
-          // style={{justifyContent:'flexStart', width:'100%'}}
-          // variant='contained'
 
-        >
-          {/* What are you having? */}
-        </ButtonStyled>
+        <ButtonStyled />
         {/* Left Container */}
         <div style={{width:'49.8%', height:'90%', border:'1px solid white', display:'flex', borderRadius:'30px'}}>
-          {/* <img
-            style={{width:'100%', height:'100%', borderRadius:'30px'}}
-            src={drinkImg} /> */}
           <SpiritImage drinkState={props.drinkState} />
         </div>
         {/* Right container */}
