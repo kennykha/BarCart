@@ -32,7 +32,6 @@ const Spirit = styled.div`
   color: white;
   justify-content: center;
   align-items: ${(props) => {
-    // console.log(props)
     let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
     return spiritCheck === props.className ? 'flex-start' : 'center';
   }};
@@ -40,7 +39,6 @@ const Spirit = styled.div`
   background-color: ${(values) => `#${Object.values(values.values.spirit)}`};
   margin: 0;
   letter-spacing: 8px;
-  /* Switch to flexbox for adjusting height later */
   height: ${(props) => {
     let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
     return spiritCheck === props.className ? '1000px' : '40px';
@@ -50,4 +48,6 @@ const Spirit = styled.div`
     let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
     return spiritCheck === props.className ? '100px' : '20px';
   }};
+  transition: height 0.5s ease-out;
+  /* overflow: hidden; */
 `

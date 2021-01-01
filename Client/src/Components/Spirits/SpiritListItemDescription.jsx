@@ -12,7 +12,7 @@ const SpiritListItemDescription = (props) => {
     props.drinkState.drinkObj.drinkMeasures.forEach(measure => measures+= measure + ' | ');
     console.log(ingredients, measures)
     return (
-      <div>
+      <div style={{marginTop:'20px'}}>
         <DrinkDescription>Drink Name: {drinkDesc.drinkName}</DrinkDescription>
         <DrinkDescription>Instructions: {drinkDesc.drinkInstruction}</DrinkDescription>
         <DrinkDescription>Ingredients: {ingredients}</DrinkDescription>
@@ -29,4 +29,5 @@ export default SpiritListItemDescription;
 const DrinkDescription = styled.div`
   font-size: 25px;
   letter-spacing: 1px;
+  padding: 10px;
 `

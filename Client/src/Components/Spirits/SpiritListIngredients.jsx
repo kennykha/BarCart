@@ -1,35 +1,62 @@
 import React from 'React';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import SpiritListItemDescription from './SpiritListItemDescription.jsx';
+import LikeDislike from './SpiritListItemLikeDislike.jsx';
+import SpiritImage from './SpiritImage.jsx';
 
 const SpiritListIngredients = (props) => {
   // console.log('ingredients props', props)
+  const useStyles = makeStyles({
+    root: {
+      background: 'linear-gradient(45deg, #FE6B8B, #FF8E53)',
+      border: 0,
+      borderRadius: 15,
+      color: 'white',
+      padding: '0 30px',
+      width: '100%',
+      height: '40px'
+    }
+  })
+
+  function ButtonStyled() {
+    const classes = useStyles();
+    return <Button className={classes.root} onClick={(event) => {
+      event.stopPropagation();
+      props.GetDrink();
+    }}>What are you having?</Button>
+  }
+
   const ingredients = ['Lime', 'Orange', 'Bitters', 'Cream', 'Salt', 'Lime', 'Orange', 'Bitters', 'Cream', 'Salt', 'Lime', 'Orange', 'Bitters', 'Cream', 'Salt']
   if (props.currentSpirit === props.spiritComponent) {
     // console.log('ingredient check', props.currentSpirit === props.spiritComponent)
     const drinkImg = props.drinkState.drinkImg
     return (
       <SpiritIngredients>
-        <Button
-          onClick={(event) => {
-            event.stopPropagation();
-            props.GetDrink();
-          }}
-          style={{justifyContent:'flexStart', width:'100%'}}
-          variant='contained'
+        {/* <ButtonStyled /> */}
+        <ButtonStyled
+          // onClick={(event) => {
+          //   event.stopPropagation();
+          //   props.GetDrink();
+          // }}
+          // style={{justifyContent:'flexStart', width:'100%'}}
+          // variant='contained'
+
         >
-          What are you having?
-        </Button>
+          {/* What are you having? */}
+        </ButtonStyled>
         {/* Left Container */}
-        <div style={{width:'49.8%', height:'90%', border:'1px solid black', display:'flex'}}>
-          <img
-            style={{width:'100%', height:'100%'}}
-            src={drinkImg} />
+        <div style={{width:'49.8%', height:'90%', border:'1px solid white', display:'flex', borderRadius:'30px'}}>
+          {/* <img
+            style={{width:'100%', height:'100%', borderRadius:'30px'}}
+            src={drinkImg} /> */}
+          <SpiritImage drinkState={props.drinkState} />
         </div>
         {/* Right container */}
-        <div style={{width:'49.8%', height:'90%', border:'1px solid black'}}>
+        <div style={{width:'49.8%', height:'90%', border:'1px solid white', borderLeft:'0', display:'flex', flexWrap:'wrap', borderRadius:'30px'}}>
           <SpiritListItemDescription drinkState={props.drinkState}/>
+          <LikeDislike drinkState={props.drinkState} />
         </div>
       </SpiritIngredients>
     )

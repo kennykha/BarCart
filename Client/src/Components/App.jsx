@@ -13,7 +13,8 @@ class App extends React.Component {
       selectedSpirit: "",
       drinkImg: "",
       drinkDescription: "",
-      drinkObj: ""
+      drinkObj: "",
+      appName: "BarCart"
     }
     this.SelectSpirit = this.SelectSpirit.bind(this);
     this.GetDrink = this.GetDrink.bind(this);
@@ -25,13 +26,15 @@ class App extends React.Component {
       this.setState({
         selectedSpirit: "",
         drinkImg: "",
-        drinkObj: ""
+        drinkObj: "",
+        appName: "BarCart"
       })
     } else {
       this.setState({
         selectedSpirit : e.target.innerText,
         drinkImg: "",
-        drinkObj: ""
+        drinkObj: "",
+        appName: "",
       })
     }
   }
@@ -39,7 +42,6 @@ class App extends React.Component {
   GetDrink() {
     axios.get('/drinks', {params:{current:`${this.state.selectedSpirit}`}})
       .then((success) => {
-        // console.log('THIS IS SUCCESS', success);
         const drinkObj = {
           drinkName: success.data.strDrink,
           drinkIngredients: [],
@@ -71,9 +73,11 @@ class App extends React.Component {
         <SpiritList
           SelectSpirit={this.SelectSpirit}
           currentSpirit={this.state.selectedSpirit}
-          // currentSpirit={this.state}
           drinkState={this.state}
           GetDrink={this.GetDrink}/>
+          <BarCart>
+            {this.state.appName}
+          </BarCart>
       </div>
     )
   }
@@ -81,6 +85,11 @@ class App extends React.Component {
 
 export default App;
 
-const Title = styled.h1`
+const BarCart = styled.h1`
   text-align: center;
+  color: white;
+  text-decoration: underline;
+  letter-spacing: 10px;
+  font-size: 100px;
+
 `
