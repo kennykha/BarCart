@@ -1,6 +1,7 @@
 import React from 'react';
 import SpiritListItem from './SpiritListItem.jsx';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const SpiritList = (props) => {
   const colors = ['F5B58C', 'FE8A41', 'EF6868', 'C39CE1', '56D4F0', 'B5E9BA']

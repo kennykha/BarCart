@@ -1,6 +1,7 @@
 import React from 'React';
 import styled from 'styled-components';
 import SpiritListIngredients from './SpiritListIngredients.jsx';
+import { motion } from 'framer-motion';
 
 const SpiritListItem = (props) => {
   // console.log(Object.keys(props.spirit)[0])
@@ -9,13 +10,14 @@ const SpiritListItem = (props) => {
   return (
     <Spirit
       className={spiritName}
-      onClick={(e) => props.SelectSpirit(e)} values={props}
+      values={props}
     >
-      <div
+      <motion.div
+        whileHover={{scale:1.5}}
         style={{width:'100%', textAlign:'center'}}
       >
-        {spiritName}
-      </div>
+        <div onClick={(e) => props.SelectSpirit(e)}>{spiritName}</div>
+      </motion.div>
       <SpiritListIngredients
         currentSpirit={props.currentSpirit}
         spiritComponent={Object.keys(props.spirit)[0]}
@@ -49,6 +51,6 @@ const Spirit = styled.div`
     return spiritCheck === props.className ? '100px' : '20px';
   }};
   transition: height 0.5s ease-out;
-  transition: font-size 0.2s ease;
+  transition: font-size 0.5s ease;
   /* overflow: hidden; */
 `

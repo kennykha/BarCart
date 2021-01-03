@@ -6,6 +6,7 @@ import SpiritListItemDescription from './SpiritListItemDescription.jsx';
 import LikeDislike from './SpiritListItemLikeDislike.jsx';
 import SpiritImage from './SpiritImage.jsx';
 
+
 const SpiritListIngredients = (props) => {
   // console.log('ingredients props', props)
   const useStyles = makeStyles({
@@ -16,7 +17,9 @@ const SpiritListIngredients = (props) => {
       color: 'white',
       padding: '0 30px',
       width: '100%',
-      height: '40px'
+      height: '40px',
+      cursor: 'pointer',
+      letterSpacing: '3px'
     }
   })
 
@@ -28,13 +31,11 @@ const SpiritListIngredients = (props) => {
     }}>What are you having?</Button>
   }
 
-  const ingredients = ['Lime', 'Orange', 'Bitters', 'Cream', 'Salt', 'Lime', 'Orange', 'Bitters', 'Cream', 'Salt', 'Lime', 'Orange', 'Bitters', 'Cream', 'Salt']
   if (props.currentSpirit === props.spiritComponent) {
     // console.log('ingredient check', props.currentSpirit === props.spiritComponent)
     const drinkImg = props.drinkState.drinkImg
     return (
       <SpiritIngredients>
-
         <ButtonStyled />
         {/* Left Container */}
         <div style={{width:'49.8%', height:'90%', border:'1px solid white', display:'flex', borderRadius:'30px'}}>
@@ -43,7 +44,7 @@ const SpiritListIngredients = (props) => {
         {/* Right container */}
         <div style={{width:'49.8%', height:'90%', border:'1px solid white', borderLeft:'0', display:'flex', flexWrap:'wrap', borderRadius:'30px'}}>
           <SpiritListItemDescription drinkState={props.drinkState}/>
-          <LikeDislike drinkState={props.drinkState} />
+          <LikeDislike drinkState={props.drinkState} GetDrink={props.GetDrink}/>
         </div>
       </SpiritIngredients>
     )

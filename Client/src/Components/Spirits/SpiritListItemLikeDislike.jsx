@@ -2,11 +2,12 @@ import React from 'react';
 import { motion, useMotionValue, useTransform} from 'framer-motion';
 
 const LikeDislike = (props) => {
+  console.log('LIKESISLIKE', props)
   const x = useMotionValue(0);
   const xInput = [-100, 0, 100];
   const background = useTransform(x, xInput, [
     "linear-gradient(180deg, #ff008c 0%, rgb(211, 9, 225) 100%)",
-    "linear-gradient(180deg, #7700ff 0%, rgb(68, 0, 255) 100%)",
+    "linear-gradient(180deg, #7700ff 0%, rgb(150, 0, 255) 100%)",
     "linear-gradient(180deg, rgb(230, 255, 0) 0%, rgb(3, 209, 0) 100%)"
   ]);
   const color = useTransform(x, xInput, [
@@ -19,13 +20,23 @@ const LikeDislike = (props) => {
   const crossPathB = useTransform(x, [-50, -100], [0, 1]);
   if (props.drinkState.drinkObj) {
   return (
-    <motion.div style={{ background, position:'absolute', borderRadius:'30px', width: '49%', height:'150px', display:'flex', justifyContent:'center',marginTop:'570px' }} onClick={
-      (event) => event.stopPropagation()
-    }>
+    <motion.div
+      initial={{opacity: 0}}
+      transition={{duration: .9}}
+      animate={{opacity: .75}}
+      style={{ background, border: '1px solid white', position:'absolute', borderRadius:'30px', width: '49.2%', height:'100px', display:'flex', justifyContent:'center',marginTop:'621px', opacity:'.75' }}
+      onClick={(event) => event.stopPropagation()}
+    >
       <motion.div
         className="box"
-        style={{ x, background:'white', borderRadius:'30px', width: '150px', height:'150px'}}
+        style={{ x, background:'white', borderRadius:'80px', width: '100px', height:'100px', opacity: '.95'}}
         drag="x"
+        onDragEnd={(event,info) => {
+          console.log(info.point.x)
+          if (info.point.x <= 700) {
+            props.GetDrink();
+          }
+        }}
         dragConstraints={{ left: 0, right: 0 }}
       >
         <svg className="progress-icon" viewBox="0 0 50 50">

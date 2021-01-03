@@ -75,21 +75,15 @@ class App extends React.Component {
           currentSpirit={this.state.selectedSpirit}
           drinkState={this.state}
           GetDrink={this.GetDrink}/>
-          <BarCart>
+          <motion.div
+            initial={{opacity: 0}}
+            transition={{ duration: .5}}
+            animate={{fontSize:'100px', color:'white', textDecoration:'underline', letterSpacing:'30px', textAlign:'center', y: 100, opacity: 1}}>
             {this.state.appName}
-          </BarCart>
+          </motion.div>
       </div>
     )
   }
 }
 
 export default App;
-
-const BarCart = styled.h1`
-  text-align: center;
-  color: white;
-  text-decoration: underline;
-  letter-spacing: 10px;
-  font-size: 100px;
-
-`
