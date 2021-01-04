@@ -14,7 +14,8 @@ class App extends React.Component {
       drinkImg: "",
       drinkDescription: "",
       drinkObj: "",
-      appName: "BarCart"
+      appName: "BarCart",
+      buttonClicked: false
     }
     this.SelectSpirit = this.SelectSpirit.bind(this);
     this.GetDrink = this.GetDrink.bind(this);
@@ -27,7 +28,8 @@ class App extends React.Component {
         selectedSpirit: "",
         drinkImg: "",
         drinkObj: "",
-        appName: "BarCart"
+        appName: "BarCart",
+        buttonClicked: false
       })
     } else {
       this.setState({
@@ -35,36 +37,49 @@ class App extends React.Component {
         drinkImg: "",
         drinkObj: "",
         appName: "",
+        buttonClicked: false
       })
     }
   }
 
   GetDrink() {
-    axios.get('/drinks', {params:{current:`${this.state.selectedSpirit}`}})
-      .then((success) => {
-        const drinkObj = {
-          drinkName: success.data.strDrink,
-          drinkIngredients: [],
-          drinkMeasures: [],
-          drinkInstruction: success.data.strInstructions
-        }
+    this.setState({
+      buttonClicked: true
+    });
 
-        for (var key in success.data) {
-          if (key.includes('Ingredient') && (success.data[`${key}`] !== null)) {
-            drinkObj.drinkIngredients.push(success.data[`${key}`])
-          }
-
-          if (key.includes('Measure') && (success.data[`${key}`] !== null)) {
-            drinkObj.drinkMeasures.push(success.data[`${key}`])
-          }
-        }
-        this.setState({
-          drinkImg: success.data.strDrinkThumb,
-          drinkDescription: success.data,
-          drinkObj: drinkObj
-        })
+    if (this.state.selectedSpirit === 'NON-ALCOHOLIC') {
+      console.log('NO ALCHY')
+      this.setState({
+        drinkImg: "https://bit.ly/387IrZ4",
+        buttonClicked: true
       })
-      .catch((err) => console.log(err))
+    } else {
+      axios.get('/drinks', {params:{current:`${this.state.selectedSpirit}`}})
+        .then((success) => {
+          const drinkObj = {
+            drinkName: success.data.strDrink,
+            drinkIngredients: [],
+            drinkMeasures: [],
+            drinkInstruction: success.data.strInstructions,
+          }
+
+          for (var key in success.data) {
+            if (key.includes('Ingredient') && (success.data[`${key}`] !== null)) {
+              drinkObj.drinkIngredients.push(success.data[`${key}`])
+            }
+
+            if (key.includes('Measure') && (success.data[`${key}`] !== null)) {
+              drinkObj.drinkMeasures.push(success.data[`${key}`])
+            }
+          }
+          this.setState({
+            drinkImg: success.data.strDrinkThumb,
+            drinkDescription: success.data,
+            drinkObj: drinkObj,
+          })
+        })
+        .catch((err) => console.log(err))
+    }
   }
 
   render() {

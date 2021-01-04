@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, useMotionValue, useTransform} from 'framer-motion';
 
 const LikeDislike = (props) => {
-  console.log('LIKESISLIKE', props)
   const x = useMotionValue(0);
   const xInput = [-100, 0, 100];
   const background = useTransform(x, xInput, [
@@ -29,10 +28,10 @@ const LikeDislike = (props) => {
     >
       <motion.div
         className="box"
-        style={{ x, background:'white', borderRadius:'80px', width: '100px', height:'100px', opacity: '.95'}}
+        style={{ x, background:'white', borderRadius:'80px', width: '100px', height:'100px', opacity: '.95', cursor:'pointer'}}
         drag="x"
         onDragEnd={(event,info) => {
-          console.log(info.point.x)
+          // console.log(info.point.x)
           if (info.point.x <= 700) {
             props.GetDrink();
           }

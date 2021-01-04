@@ -2,9 +2,12 @@ import React from 'React';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { motion } from 'framer-motion';
 import SpiritListItemDescription from './SpiritListItemDescription.jsx';
 import LikeDislike from './SpiritListItemLikeDislike.jsx';
 import SpiritImage from './SpiritImage.jsx';
+import SpiritImageWater from './SpiritImageWater.jsx';
+import Loader from './SpiritLoader.jsx';
 
 
 const SpiritListIngredients = (props) => {
@@ -39,10 +42,13 @@ const SpiritListIngredients = (props) => {
         <ButtonStyled />
         {/* Left Container */}
         <div style={{width:'49.8%', height:'90%', border:'1px solid white', display:'flex', borderRadius:'30px'}}>
+        <Loader drinkState={props.drinkState}/>
           <SpiritImage drinkState={props.drinkState} />
         </div>
         {/* Right container */}
         <div style={{width:'49.8%', height:'90%', border:'1px solid white', borderLeft:'0', display:'flex', flexWrap:'wrap', borderRadius:'30px'}}>
+        <Loader drinkState={props.drinkState}/>
+        <SpiritImageWater drinkState={props.drinkState} />
           <SpiritListItemDescription drinkState={props.drinkState}/>
           <LikeDislike drinkState={props.drinkState} GetDrink={props.GetDrink}/>
         </div>

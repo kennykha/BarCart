@@ -5,7 +5,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { motion } from 'framer-motion';
 
 const SpiritListItemDescription = (props) => {
-  console.log(props)
+  // console.log(props)
 
   const CheckboxMake = (ingredient) => {
     const [checked, setChecked] = React.useState(false)

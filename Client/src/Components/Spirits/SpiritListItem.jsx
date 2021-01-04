@@ -16,7 +16,7 @@ const SpiritListItem = (props) => {
         whileHover={{scale:1.5}}
         style={{width:'100%', textAlign:'center'}}
       >
-        <div onClick={(e) => props.SelectSpirit(e)}>{spiritName}</div>
+        <div style={{cursor:'pointer'}} onClick={(e) => props.SelectSpirit(e)}>{spiritName}</div>
       </motion.div>
       <SpiritListIngredients
         currentSpirit={props.currentSpirit}
@@ -45,7 +45,7 @@ const Spirit = styled.div`
     let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
     return spiritCheck === props.className ? '1000px' : '40px';
   }};
-  cursor: pointer;
+  /* cursor: pointer; */
   font-size: ${(props) => {
     let spiritCheck = props.values.currentSpirit ? props.values.currentSpirit : 'null';
     return spiritCheck === props.className ? '100px' : '20px';

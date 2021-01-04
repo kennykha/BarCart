@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const SpiritList = (props) => {
-  const colors = ['F5B58C', 'FE8A41', 'EF6868', 'C39CE1', '56D4F0', 'B5E9BA']
-  const spirits = [{'GIN':'F5B58C'}, {'RUM':'FE8A41'}, {'VODKA':'EF6868'}, {'WHISKEY':'C39CE1'}, {'TEQUILA':'56D4F0'}, {'NON-ALCOHOLIC':'B5E9BA'}]
+  const colors = ['F5B58C', 'F5CD5E', 'EF6868', 'C39CE1', '56D4F0', 'B5E9BA']
+  const spirits = [{'GIN':'F5B58C'}, {'RUM':'e9a682'}, {'VODKA':'ec9c9c'}, {'WHISKEY':'b5badd'}, {'TEQUILA':'6dd6ee'}, {'NON-ALCOHOLIC':'B5E9BA'}]
   return (
     <div>
       {spirits.map((spirit) => (
@@ -21,4 +21,8 @@ const SpiritList = (props) => {
 }
 
 export default SpiritList;
+
+const test = styled.div`
+  color: #ec9c9c;
+`
 
