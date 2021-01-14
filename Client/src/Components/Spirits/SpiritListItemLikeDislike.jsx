@@ -23,7 +23,7 @@ const LikeDislike = (props) => {
       initial={{opacity: 0}}
       transition={{duration: .9}}
       animate={{opacity: .75}}
-      style={{ background, border: '1px solid white', position:'absolute', borderRadius:'30px', width: '26.4%', height:'100px', display:'flex', justifyContent:'center',marginTop:'621px', opacity:'.75' }}
+      style={{ background, border: '1px solid white', position:'absolute', borderRadius:'30px', width: '35.2%', height:'100px', display:'flex', justifyContent:'center',marginTop:'621px', opacity:'.75' }}
       onClick={(event) => event.stopPropagation()}
     >
       <motion.div
