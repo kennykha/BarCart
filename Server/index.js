@@ -42,6 +42,6 @@ App.get('/drinks', (req, res) => {
     })
 });
 
-App.listen(3000, () => (
-  console.log('Listening on port 3000')
+App.listen(3001, () => (
+  console.log('Listening on port 3001')
 ))

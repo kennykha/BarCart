@@ -28,7 +28,7 @@ const loaderVariants2 = {
 }
 
 const Loader = (props) => {
-  console.log('loader props', props)
+  // console.log('loader props', props)
   if(props.drinkState.buttonClicked) {
     return (
       <motion.div

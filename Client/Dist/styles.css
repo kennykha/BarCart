@@ -1,3 +1,15 @@
 body {
-  background-color: #ACD9CB;
+  background-color: #c0f0e0;
+  display: flex;
 }
+
+#app {
+  width: 1200px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50%;
+  height: 1631px;
+  border: 1px solid white;
+  background: #ACD9CB;
+}
+
