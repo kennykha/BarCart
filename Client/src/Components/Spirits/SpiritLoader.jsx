@@ -32,7 +32,8 @@ const Loader = (props) => {
   if(props.drinkState.buttonClicked) {
     return (
       <motion.div
-        style={{display:'flex', flexWrap:'wrap', position: 'absolute', marginTop: '330px'}}
+        // style={{display:'flex', flexWrap:'wrap', position: 'absolute', marginTop: '330px'}}
+        style={{display:'flex', flexWrap:'wrap', position: 'absolute', marginTop: '20%'}}
         initial={{opacity: 1}}
         transition={{duration: 2}}
         animate={{opacity: 0}}
