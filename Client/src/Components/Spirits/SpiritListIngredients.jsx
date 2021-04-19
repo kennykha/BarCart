@@ -41,16 +41,16 @@ const SpiritListIngredients = (props) => {
       <SpiritIngredients>
         <ButtonStyled />
         {/* Left Container */}
-        <div style={{width:'49.8%', height:'90%', border:'1px solid white', display:'flex', borderRadius:'30px'}}>
+        {/* <div style={{width:'49.8%', height:'90%', border:'1px solid white', display:'flex', borderRadius:'30px'}}>
         <Loader drinkState={props.drinkState}/>
           <SpiritImage drinkState={props.drinkState} />
-        </div>
+        </div> */}
         {/* Right container */}
-        <div style={{width:'49.8%', height:'90%', border:'1px solid white', borderLeft:'0', display:'flex', flexWrap:'wrap', borderRadius:'30px'}}>
-        <Loader drinkState={props.drinkState}/>
-        <SpiritImageWater drinkState={props.drinkState} />
+        <div style={{width:'70%', height:'90%', border:'2px solid white', display:'flex', flexWrap:'wrap', borderRadius:'30px'}}>
+        {/* <Loader drinkState={props.drinkState}/> */}
+        {/* <SpiritImageWater drinkState={props.drinkState} /> */}
           <SpiritListItemDescription drinkState={props.drinkState}/>
-          <LikeDislike drinkState={props.drinkState} GetDrink={props.GetDrink}/>
+          {/* <LikeDislike drinkState={props.drinkState} GetDrink={props.GetDrink}/> */}
         </div>
       </SpiritIngredients>
     )
@@ -65,12 +65,12 @@ export default SpiritListIngredients;
 
 const SpiritIngredients = styled.div`
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   flex-wrap:wrap;
   align-items: center;
   /* align-self: center; */
   width: 100%;
-  height: 80%;
+  height: 85%;
   /* margin-right: 1000px; */
 
 `

@@ -48,7 +48,6 @@ class App extends React.Component {
     });
 
     if (this.state.selectedSpirit === 'NON-ALCOHOLIC') {
-      console.log('NO ALCHY')
       this.setState({
         drinkImg: "https://bit.ly/387IrZ4",
         buttonClicked: true
